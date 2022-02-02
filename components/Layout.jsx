@@ -11,7 +11,7 @@ const Layout = ({children}) => {
             <Head>
                 <title>DubaiEstate</title>
             </Head>
-            <Box maxWidth="1280px" m="auto">
+            <Box maxWidth="full-width" m="auto">
                 <header>
                     <Navbar/>
                 </header>

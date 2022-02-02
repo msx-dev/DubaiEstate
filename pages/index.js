@@ -1,30 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
-import {Flex, Box, Text, Button} from "@chakra-ui/react";
+import {Flex, Box, Text, Button, Heading, Stack, Container, Blob} from "@chakra-ui/react";
 
 import { baseUrl } from "../utils/fetchapi";
 import { fetchApi } from "../utils/fetchapi";
 
 import Property from "../components/Property";
 
-const Banner = ({imageUrl, purpose, title1, title2, desc1, desc2, linkName, buttonText}) => (
-  <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
-    <Image src={imageUrl} width={500} height={300} alt="banner"/>
-    <Box p="5">
-      <Text color="gray.500" fontSize="sm" fontWeight="medium">{purpose}</Text>
-      <Text fontSize="3xl" fontWeight="bold">{title1}<br/>{title2}</Text>
-      <Text fontSize="lg" paddingTop="3" paddingBottom="3" color="gray.700">{desc1}<br/>{desc2}</Text>
-      <Button fontSize="xl">
-        <Link href={linkName}>{buttonText}</Link>
-      </Button>
-    </Box>
-  </Flex>
-)
+import bannerPhoto from "../assets/BannerPhoto.jpg";
+import bannerPhoto2 from "../assets/BannerPhoto2.jpg";
 
 
 export default function Home({propertiesForSale, propertiesForRent}) {
   return (
-    
+    /*
     <Box>
       <Banner 
         purpose="For Rent"
@@ -53,6 +42,45 @@ export default function Home({propertiesForSale, propertiesForRent}) {
         {propertiesForRent.map((property)=><Property property={property} key={property.id}/>)}
       </Flex>
     </Box>
+    */
+    <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+      <Flex p={18} flex={1} align={'center'} justify={'left'}>
+        <Stack spacing={6} w={'full'} maxW={'lg'}>
+          <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
+            <Text
+              as={'span'}
+              position={'relative'}
+              backgroundColor="black"
+              textColor="white">
+              Dubai
+            </Text>
+              <br/>
+            <Text color={'blue.300'} as={'span'}>
+              Real Estate
+            </Text>{' '}
+          </Heading>
+          <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'} paddingBottom="10">
+            Premium Real Estate Agency, based in the most incredible City in the World.
+          </Text>
+          <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+            <Button
+              rounded={'full'}
+              bg={'blue.400'}
+              color={'white'}
+              _hover={{
+                bg: 'blue.300',
+              }}><Link href="/search?properties=for-sale">
+              For Sale</Link>
+            </Button>
+            <Button rounded={'full'} bg=""><Link href="/search?properties=for-rent">For Rent</Link></Button>
+          </Stack>
+        </Stack>
+      </Flex>
+      <Flex flex={1.6} maxHeight={"100vh"}>
+        <Image src={bannerPhoto2} alt="BannerPhoto2" objectFit="cover"/>
+      </Flex>
+    </Stack>
+
   )
 }
 
