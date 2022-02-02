@@ -43,7 +43,7 @@ export default function Home({propertiesForSale, propertiesForRent}) {
       </Flex>
     </Box>
     */
-    <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+    <Stack minH={'500px'} maxH={"1100px"} justifyContent="center" direction={{ base: 'column', md: 'row' }}>
       <Flex p={18} flex={1} align={'center'} justify={'left'}>
         <Stack spacing={6} w={'full'} maxW={'lg'}>
           <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
