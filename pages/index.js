@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import {Flex, Box, Text, Button, Heading, Stack, Container, Blob} from "@chakra-ui/react";
+import {Flex, Box, Text, Button, Heading, Stack, Container, Blob, VStack, useBreakpointValue} from "@chakra-ui/react";
 
 import { baseUrl } from "../utils/fetchapi";
 import { fetchApi } from "../utils/fetchapi";
@@ -11,76 +11,63 @@ import bannerPhoto from "../assets/BannerPhoto.jpg";
 import bannerPhoto2 from "../assets/BannerPhoto2.jpg";
 
 
+
+
 export default function Home({propertiesForSale, propertiesForRent}) {
   return (
-    /*
-    <Box>
-      <Banner 
-        purpose="For Rent"
-        title1="Rental Homes for"
-        title2="Everyone"
-        desc1="Explore Apartments, Villas, Houses"
-        desc2="and more"
-        buttonText="Explore Renting"
-        linkName="/search?purpose=for-rent"
-        imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
-      />
-      <Flex flexWrap="wrap">
-        {propertiesForRent.map((property)=><Property property={property} key={property.id}/>)}
-      </Flex>
-      <Banner 
-        purpose="For Sale"
-        title1="Find, Buy and Own your"
-        title2="New Home"
-        desc1="Explore Apartments, Villas, Houses"
-        desc2="and more"
-        buttonText="Explore Buying"
-        linkName="/search?purpose=for-sale"
-        imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008"
-      />
-      <Flex flexWrap="wrap">
-        {propertiesForRent.map((property)=><Property property={property} key={property.id}/>)}
-      </Flex>
-    </Box>
-    */
-    <Stack minH={'500px'} maxH={"1100px"} justifyContent="center" direction={{ base: 'column', md: 'row' }}>
-      <Flex p={18} flex={1} align={'center'} justify={'left'}>
-        <Stack spacing={6} w={'full'} maxW={'lg'}>
-          <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-            <Text
-              as={'span'}
-              position={'relative'}
-              backgroundColor="black"
-              textColor="white">
-              Dubai
-            </Text>
-              <br/>
-            <Text color={'blue.300'} as={'span'}>
-              Real Estate
-            </Text>{' '}
-          </Heading>
-          <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'} paddingBottom="10">
-            Premium Real Estate Agency, based in the most incredible City in the World.
+  <>
+  <Flex
+      w={'full'}
+      h={'100vh'}
+      backgroundImage={
+        'url(https://images.unsplash.com/flagged/photo-1559717865-a99cac1c95d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80)'
+      }
+      boxShadow={"inset 0 0 0 1000px rgba(0,0,0,.3)"}
+      backgroundSize={'cover'}
+      backgroundPosition={'center center'}>
+      <VStack
+        w={'full'}
+        justify={'center'}
+        px={useBreakpointValue({ base: 4, md: 8 })}
+        bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
+        <Stack maxW={'2xl'} align={'center'} spacing={6}>
+          <Text
+            color={'white'}
+            fontWeight={300}
+            lineHeight={1.2}
+            textAlign="center"
+            fontSize={{base: "4xl", md:"6xl"}}>
+            Premium Dubai <br/>Real Estate <br/>Office
           </Text>
-          <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+          <Stack direction={{base: "column", md: "row"}}>
             <Button
-              rounded={'full'}
+              fontSize={"3xl"}
               bg={'blue.400'}
+              fontWeight={"200"}
+              rounded={'full'}
               color={'white'}
-              _hover={{
-                bg: 'blue.300',
-              }}><Link href="/search?properties=for-sale">
-              For Sale</Link>
+              paddingBottom={1}
+              _hover={{ bg: 'blue.500' }}>
+              <Link href="/search?properties=for-sale">
+              Properties For Sale</Link>
             </Button>
-            <Button rounded={'full'} bg=""><Link href="/search?properties=for-rent">For Rent</Link></Button>
+            <Button
+              bg={'whiteAlpha.300'}
+              fontSize={"3xl"}
+              fontWeight={"200"}
+              rounded={'full'}
+              color={'white'}
+              paddingBottom={1}
+              _hover={{ bg: 'whiteAlpha.500' }}>
+              <Link href="/search?properties=for-sale">
+              Properties For Rent</Link>
+            </Button>
           </Stack>
         </Stack>
-      </Flex>
-      <Flex flex={1.6} maxHeight={"100vh"}>
-        <Image src={bannerPhoto2} alt="BannerPhoto2" objectFit="cover"/>
-      </Flex>
-    </Stack>
-
+      </VStack>
+    </Flex>
+    
+  </>
   )
 }
 
