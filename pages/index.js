@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import {Flex, Box, Text, Button, Heading, Stack, Container, Blob, VStack, useBreakpointValue} from "@chakra-ui/react";
+import {Flex, Box, Text, Button, Heading, Stack, Container, Blob, VStack, useBreakpointValue, Stat, StatLabel, StatNumber, SimpleGrid, useColorModeValue} from "@chakra-ui/react";
 
 import { baseUrl } from "../utils/fetchapi";
 import { fetchApi } from "../utils/fetchapi";
@@ -10,7 +10,25 @@ import Property from "../components/Property";
 import bannerPhoto from "../assets/BannerPhoto.jpg";
 import bannerPhoto2 from "../assets/BannerPhoto2.jpg";
 
-
+function StatsCard(props) {
+  const { title, stat } = props;
+  return (
+    <Stat
+      px={{ base: 4, md: 8 }}
+      py={'5'}
+      shadow={'xl'}
+      border={'1px solid'}
+      borderColor={useColorModeValue('gray.800', 'gray.500')}
+      rounded={'lg'}>
+      <StatLabel fontWeight={'medium'} isTruncated>
+        {title}
+      </StatLabel>
+      <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
+        {stat}
+      </StatNumber>
+    </Stat>
+  );
+}
 
 
 export default function Home({propertiesForSale, propertiesForRent}) {
@@ -42,23 +60,23 @@ export default function Home({propertiesForSale, propertiesForRent}) {
           <Stack direction={{base: "column", md: "row"}}>
             <Button
               fontSize={"3xl"}
-              bg={'blue.400'}
+              bg={'gray.900'}
               fontWeight={"200"}
               rounded={'full'}
               color={'white'}
               paddingBottom={1}
-              _hover={{ bg: 'blue.500' }}>
+              _hover={{ bg: 'black' }}>
               <Link href="/search?properties=for-sale">
               Properties For Sale</Link>
             </Button>
             <Button
-              bg={'whiteAlpha.300'}
+              bg={'gray.200'}
               fontSize={"3xl"}
               fontWeight={"200"}
               rounded={'full'}
-              color={'white'}
+              color={'black'}
               paddingBottom={1}
-              _hover={{ bg: 'whiteAlpha.500' }}>
+              _hover={{ bg: 'gray.400' }}>
               <Link href="/search?properties=for-sale">
               Properties For Rent</Link>
             </Button>
@@ -66,6 +84,20 @@ export default function Home({propertiesForSale, propertiesForRent}) {
         </Stack>
       </VStack>
     </Flex>
+    <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
+      <Text
+        textAlign={'center'}
+        fontSize={'4xl'}
+        py={10}
+        fontWeight={'bold'}>
+        What is our company doing?
+      </Text>
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+        <StatsCard title={'We supply'} stat={'50,000 Properties'} />
+        <StatsCard title={'To'} stat={'International Clients'} />
+        <StatsCard title={'With'} stat={'24/7 Support'} />
+      </SimpleGrid>
+    </Box>
     
   </>
   )
