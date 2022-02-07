@@ -84,15 +84,16 @@ export default function Home({propertiesForSale, propertiesForRent}) {
         </Stack>
       </VStack>
     </Flex>
+    
     <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
       <Text
         textAlign={'center'}
         fontSize={'4xl'}
         py={10}
-        fontWeight={'bold'}>
+        fontWeight={'bold'}> 
         What is our company doing?
       </Text>
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }} paddingBottom="40" paddingTop="20">
         <StatsCard title={'We supply'} stat={'50,000 Properties'} />
         <StatsCard title={'To'} stat={'International Clients'} />
         <StatsCard title={'With'} stat={'24/7 Support'} />
