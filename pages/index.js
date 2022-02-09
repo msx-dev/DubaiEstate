@@ -99,6 +99,26 @@ export default function Home({propertiesForSale, propertiesForRent}) {
         <StatsCard title={'With'} stat={'24/7 Support'} />
       </SimpleGrid>
     </Box>
+
+    <Box w={'full'}
+      h={'100vh'}
+      backgroundImage={
+        'url(https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80)'
+      }
+      boxShadow={"inset 0 0 0 1000px rgba(0,0,0,.3)"}
+      backgroundSize={'cover'}
+      backgroundPosition={'center center'}
+      display={"flex"}
+      flexDirection={"row"}>
+      <Box width={"50%"}>
+        <Text>Left side</Text>
+      </Box>
+      <Box width={"50%"}>
+        <Box width={"600px"} height={"500px"} backgroundColor={"white"} margin={"auto"} marginTop={"200px"} justifyContent={"space-around"} alignItems={"center"}>
+
+        </Box>
+      </Box>
+    </Box>
     
   </>
   )
